@@ -39,8 +39,11 @@ export async function fetchLatestInvoices() {
       LIMIT 5`;
 
     const latestInvoices = data.rows.map((invoice) => ({
-      ...invoice,
-      amount: formatCurrency(invoice.amount),
+      id: invoice.id,
+      name: invoice.name,
+      image_url: invoice.image_url,
+      email: invoice.email,
+      amount: invoice.amount,
     }));
     return latestInvoices;
   } catch (error) {
